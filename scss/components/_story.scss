@@ -1,0 +1,83 @@
+.story {
+  width: 75%;
+  margin: 0 auto 7rem;
+  box-shadow: 0 3rem 5rem rgba($color-black, 0.15);
+  background-color: rgba($color-white, 0.6);
+  font-size: $default-font-size;
+  padding: 6rem;
+  align-items: center;
+  transform: skewX(-12deg);
+  max-width: 90rem;
+
+  & > * {
+    transform: skewX(12deg);
+  }
+
+  &__shape {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+    overflow: hidden;
+    position: relative;
+
+    @include respond(phone) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__image {
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    transition: all 0.5s;
+  }
+
+  &__text {
+    width: 70%;
+    line-height: 1.7;
+
+    @include respond(phone) {
+      width: 90%;
+    }
+  }
+
+  &__caption {
+    @include absCenter;
+
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.7rem;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__image {
+    filter: blur(3px) brightness(80%);
+    transform: translateX(-4rem) scale(1);
+  }
+
+  @include respond(phone) {
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    margin: 0;
+    transform: skew(0deg);
+    width: 90%;
+
+    & > * {
+      transform: skewX(0deg);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+    }
+  }
+}
